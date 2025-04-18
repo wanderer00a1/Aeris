@@ -20,8 +20,8 @@ Aeris is a sleek, modern React weather app that fetches live weather data using 
 
 ## 📸 Screenshots
 
-| Homepage with Weather Data | Loading Animation |
-| -------------------------- | ----------------- |
+| Homepage with Weather Data |
+| -------------------------- |
 | ![Screenshot 1](SS/SS.png) |
 
 ---
