@@ -1,0 +1,206 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html,body{
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-image: url("/home.png");
+  background-size: cover; /* makes it cover the entire screen */
+  background-position: center; /* centers the image */
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* optional: makes background stay on scroll */
+}
+
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  background-color: #480ca8;
+}
+
+.logo {
+  text-align: center;
+  font-size: 2.25rem;
+  color: #34b8ff;
+  margin-left: 8px;
+}
+
+.invisible {
+  font-size: 2.9rem;
+  visibility: hidden;
+}
+.input {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+form input {
+  padding: 10px;
+  color: #453eff;
+  font-family: cursive;
+  width: 80%;
+  height: 40px;
+  background-color: #ccc;
+  text-align: center;
+  text-transform: capitalize;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+form input::placeholder {
+  font-weight: 700;
+  color: #004265;
+}
+
+.btn {
+  padding: 9px;
+  margin-left: 5px;
+  cursor: pointer;
+  height: 40px;
+  font-size: large;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  border: 1px solid black;
+  border-radius: 100%;
+  background-color: #0077b6;
+}
+
+.btn:hover {
+  background-color: #00679e;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.box {
+  flex: 1;
+  max-width: calc(50% - 20px);
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.weatherinfo, 
+.Airinfo {
+  color: rgb(136, 200, 255);
+  padding: 30px;
+  border-radius: 15px;
+  font-family: cursive;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}
+
+
+
+
+.weatherinfo h2 {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  font-family: cursive;
+  margin-left: 55px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.placeNtime {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.placeNtime span {
+  font-size: 16px;
+}
+.weather {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.weather span {
+  font-size: 24px;
+}
+
+.sym {
+  font-size: 40px;
+}
+
+.Airinfo h2 {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.airCon {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.airCon div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.airCon span {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+  color: #a5c7f0;
+}
+
+.airCon strong {
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.loading{
+  display: flex;
+  justify-content: center;
+}
