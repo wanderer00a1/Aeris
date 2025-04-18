@@ -30,7 +30,7 @@ Aeris is a sleek, modern React weather app that fetches live weather data using 
 
 ### 🔧 Prerequisites
 
-- Node.js and npm installed
+- npm installed
 
 ### 📦 Installation
 
