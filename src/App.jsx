@@ -6,6 +6,7 @@ import { FaTemperatureFull, FaWind } from "react-icons/fa6";
 import { IoCloudOutline } from "react-icons/io5";
 import { WiHumidity } from "react-icons/wi";
 import { Atom } from "react-loading-indicators";
+import { RiPercentLine } from "react-icons/ri";
 
 const key = "NIf7JVr9wHbQ16794lyaEgzfbtapMlRd";
 function App() {
@@ -19,6 +20,7 @@ function App() {
       const res = await axios.get(
         `https://api.tomorrow.io/v4/weather/forecast?location=${location}&apikey=${key}`
       );
+      console.log(res.data);
       setData(res.data);
       setIsLoading(false);
     }
@@ -33,17 +35,27 @@ function App() {
 
       {isLoading ? (
         <div className="loading">
-          <Atom color="#319bcc" size="medium" text="Fetching..." textColor="#2490e3" />
+          <Atom
+            color="#319bcc"
+            size="medium"
+            text="Fetching..."
+            textColor="#2490e3"
+          />
         </div>
       ) : (
-        <div className="container">
-          <Box>
-            <CurrentWeatherInfo data={data} />
-          </Box>
-          <Box>
-            <AirConditions data={data} />
-          </Box>
-        </div>
+        <>
+          <div className="container">
+            <Box>
+              <CurrentWeatherInfo data={data} />
+            </Box>
+            <Box>
+              <AirConditions data={data} />
+            </Box>
+          </div>
+          <div>
+            <Forecast data={data} />
+          </div>
+        </>
       )}
     </>
   );
@@ -67,7 +79,7 @@ function Logo() {
       <div className="logo">
         Aeris <CiCloud />
       </div>
-      <div>
+      <div style={{fontFamily:"cursive"}}>
         {liveTime.toLocaleDateString("en-GB").replace(/\//g, "-")} |{" "}
         {liveTime.toLocaleTimeString([], {
           hour: "2-digit",
@@ -212,5 +224,58 @@ function AirConditions({ data }) {
         </div>
       )}
     </>
+  );
+}
+
+function Forecast({ data }) {
+  const weekly = data?.timelines?.daily?.slice(1);
+  return (
+    data && (
+      <>
+        <h2 className="header">Weekly Forecast</h2>
+        <div className="forecast">
+          {weekly?.map((day) => (
+            <ForecastBlocks key={day.time} day={day} />
+          ))}
+        </div>
+      </>
+    )
+  );
+}
+
+function ForecastBlocks({ day }) {
+  const date = new Date(day?.time);
+  const Name = date.toLocaleDateString("en-US", {
+    weekday: "long",
+    timeZone: "UTC",
+  });
+  return (
+    <div className="forecastInfo">
+      <h3>{Name}</h3>
+      <div className="col">
+        <strong>
+          <FaTemperatureFull className="icon" />
+          {day.values.temperatureMax}
+          <TbTemperatureCelsius className="icon" />
+        </strong>
+
+        <strong>
+          <IoCloudOutline className="icon" />
+          {day.values.cloudCoverMax}
+          <RiPercentLine />
+        </strong>
+      </div>
+      <div className="col2">
+        <span>
+          <FaWind className="icon" />
+          {day.values.windSpeedMax} m/s
+        </span>
+        <strong>
+          <WiHumidity className="icon" />
+          {day.values.humidityAvg}
+          <RiPercentLine className="icon" />
+        </strong>
+      </div>
+    </div>
   );
 }
